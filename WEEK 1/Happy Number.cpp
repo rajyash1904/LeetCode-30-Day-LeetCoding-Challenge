@@ -20,14 +20,11 @@ Complete function isHappy.
 
  int sum(int n){
         int sol=0;
-        
-        while(n>0){
-            
-            int k=n%10;
-            n=n/10;
-            sol+=k*k;
-        }
-        
+         while(n>0){
+             int k=n%10;
+             n=n/10;
+             sol+=k*k;
+         }
         return sol;
     }
     
@@ -35,22 +32,12 @@ Complete function isHappy.
     bool isHappy(int n) {
         
         set<int> st;
-        
         st.insert(n);
-        
-        
-        while(1){
-            
+         while(1){
             if(n==1) return true;
-            
             n=sum(n);
-            
             if(st.find(n)!=st.end()) return false;
-            
             st.insert(n);
         }
         return false;
-        
-        
-        
     }
