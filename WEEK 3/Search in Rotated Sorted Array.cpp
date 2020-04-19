@@ -64,3 +64,29 @@ public:
     }
 };
 
+
+//Improved version
+
+int srch(const vector<int> &A,int l,int r,int k){
+    if(r<l) return -1;
+    
+    int mid=(r-l)/2 +l;
+    if(A[mid]==k) return mid;
+    
+    if(A[l]<A[mid]){
+        
+    if( A[l]<=k && A[mid]>=k) return srch(A,l,mid-1,k);
+    
+    return srch(A,mid+1,r,k);
+    }
+    if(k>=A[mid] && A[r]>=k){
+        return srch(A,mid+1,r,k);
+    }
+    return srch(A,l,mid-1,k);
+    
+}
+
+int Solution::search(const vector<int> &A, int B) {
+    
+    return srch(A,0,A.size()-1,B);
+}
