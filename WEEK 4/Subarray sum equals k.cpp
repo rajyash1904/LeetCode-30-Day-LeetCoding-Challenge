@@ -55,3 +55,32 @@ public:
         return sol;
     }
 };
+
+
+//solution 2  Efficient Time: O(N)
+
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        int sol=0;
+        int n=nums.size();
+        unordered_map<int,int> hash;
+        int curr=0;
+        
+        for(int i=0;i<n;i++){
+            
+            curr+=nums[i];
+            
+            if(curr==k)  sol++;
+            
+            if(hash.find(curr-k)!=hash.end()){
+                
+                sol+=hash[curr-k];
+            }
+            hash[curr]++;
+        }
+        
+        
+        return sol;
+    }
+};
